@@ -80,7 +80,6 @@ public class Main_bfs {//하,북,상,남,동,서
 				}
 				String temp = br.readLine(); // newline 제거
 			}
-		
 			bfs(arr, start, end);
 		}
 
