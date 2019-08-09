@@ -20,8 +20,9 @@ class data {
 public class Main {
 
 	static int[][] map;// 북 동 남 서
-	static int[] dx = { -1, 0, 1, 0 };
-	static int[] dy = { 0, 1, 0, -1 };
+
+	static int[] dx = { 0, 1, 0, -1 };
+	static int[] dy = { -1, 0, 1, 0 };
 
 	public static void simulate(data robot) {
 
@@ -36,7 +37,7 @@ public class Main {
 			if (state == 1) {
 				if (map[x][y] == 0 || map[x][y] == 9) {
 					map[x][y] = -1;
-					cnt++;
+
 				}
 			}
 
@@ -47,7 +48,6 @@ public class Main {
 				// 방향에 청소하지않은 구간이 존재하면, state 1로 수정하고,
 				for (int dir_ = 1; dir_ <= 4; dir_++) {
 					d = (d + 3) % 4;
-
 					if (map[x + dx[d]][y + dy[d]] == 0 || map[x + dx[d]][y + dy[d]] == 9) {
 						x += dx[d];
 						y += dy[d];
@@ -68,6 +68,24 @@ public class Main {
 
 			}
 
+			for (int i = 0; i < map.length; i++) {
+				for (int j = 0; j < map[0].length; j++) {
+					System.out.printf("%2d ", map[i][j]);
+				}
+				System.out.println();
+			}
+			System.out.println();
+
+		}
+
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map[0].length; j++) {
+				System.out.printf("%2d ", map[i][j]);
+				if (map[i][j] == -1) {
+					cnt++;
+				}
+			}
+			System.out.println();
 		}
 		System.out.println(cnt);
 	}
