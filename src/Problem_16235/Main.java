@@ -3,6 +3,7 @@ package Problem_16235;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 // 나무재테크 나중에 풀기로
 public class Main {
 	public static void solution(int year) {
