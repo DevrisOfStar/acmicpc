@@ -25,7 +25,7 @@ public class Main {
 					isvisited[i][j] = false;
 				}
 			}
-			
+
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < M; j++) {
 					if (!isvisited[i][j] && arr[i][j] > 0) {
@@ -42,7 +42,7 @@ public class Main {
 						for (int di = 0; di < 4; di++) {
 							if (0 > a + dx[di] || 0 > b + dy[di] || a + dx[di] >= N || b + dy[di] >= M)
 								continue;
-							if (!isvisited[a + dx[di]][b + dy[di]] && arr[a+dx[di]][b+dy[di]] > 0) {
+							if (!isvisited[a + dx[di]][b + dy[di]] && arr[a + dx[di]][b + dy[di]] > 0) {
 								isvisited[a + dx[di]][b + dy[di]] = true;
 								q.offer(new int[] { a + dx[di], b + dy[di] });
 							}
@@ -61,7 +61,7 @@ public class Main {
 			}
 
 			year++;
-			
+
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < M; j++) {
 					if (arr[i][j] > 0) {
@@ -72,13 +72,14 @@ public class Main {
 							if (arr[i + dx[di]][j + dy[di]] == 0)
 								t++;
 						}
-						arr[i][j] = arr[i][j] <= t ? -1 : arr[i][j]-t;
+						arr[i][j] = arr[i][j] <= t ? -1 : arr[i][j] - t;
 					}
 				}
 			}
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < M; j++) {
-					if(arr[i][j] == -1) arr[i][j] = 0;
+					if (arr[i][j] == -1)
+						arr[i][j] = 0;
 				}
 			}
 		}
