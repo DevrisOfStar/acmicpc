@@ -21,8 +21,8 @@ public class Main {
 
 	static int[][] map;// 북 동 남 서
 
-	static int[] dx = { 0, 1, 0, -1 };
-	static int[] dy = { -1, 0, 1, 0 };
+	static int[] dx = { -1, 0, 1, 0 };
+	static int[] dy = { 0, 1, 0, -1 };
 
 	public static void simulate(data robot) {
 
@@ -68,24 +68,14 @@ public class Main {
 
 			}
 
-			for (int i = 0; i < map.length; i++) {
-				for (int j = 0; j < map[0].length; j++) {
-					System.out.printf("%2d ", map[i][j]);
-				}
-				System.out.println();
-			}
-			System.out.println();
-
 		}
 
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[0].length; j++) {
-				System.out.printf("%2d ", map[i][j]);
 				if (map[i][j] == -1) {
 					cnt++;
 				}
 			}
-			System.out.println();
 		}
 		System.out.println(cnt);
 	}
