@@ -33,11 +33,18 @@ public class Main {
 			return;
 		}
 		else {
-			isvisited[num] = true;
-			rotate(rotate[num][0], rotate[num][1], rotate[num][2]);
-			solution(num+1);
-			isvisited[num] = false;
-			arr = temp;
+			for(int i = 0; i <K ; i++) {
+				if(!isvisited[i]) {					
+					rotate(rotate[i][0], rotate[i][1], rotate[i][2]);
+					
+					isvisited[i] = true;
+					solution(num+1);
+					isvisited[i] = false;
+					arr = temp;
+					
+				}
+				
+			}
 		}
 	}
 
