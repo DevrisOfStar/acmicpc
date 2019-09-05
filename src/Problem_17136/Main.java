@@ -22,7 +22,7 @@ public class Main {
 			}
 		}
 		
-		dfs(0, cnt);
+		dfs(0, 0, cnt);
 		if(min >= 100)  {
 			System.out.println(-1);
 		}
@@ -32,14 +32,14 @@ public class Main {
 	}
 	
 	
-	public static void dfs(int cnt, int remain) {
+	public static void dfs(int row, int cnt, int remain) {
 		if(remain == 0) {
 			if(cnt < min) min = cnt;
 			return;
 		}
 		else {
 			int i = 0; int j = 0;
-			for(i = 0 ; i < 10; i++) {
+			for(i = row ; i < 10; i++) {
 				for(j = 0 ; j < 10; j++) {
 					if(!visited[i][j] && map[i][j] == 1) {
 						break;
@@ -55,7 +55,7 @@ public class Main {
 				else if(jongi[k] > 0) {
 					cover(i,j,k);
 					jongi[k]--;
-					dfs(cnt+1,remain-k*k);
+					dfs(i, cnt+1,remain-k*k);
 					decover(i,j,k);
 					jongi[k]++;
 				}
