@@ -17,6 +17,7 @@ public class Main {
 				System.out.println(func(Integer.parseInt(data),0));				
 			}else {
 				break;
+				
 			}
 		} while(true);
 	}
