@@ -3,116 +3,111 @@ package Problem_5427;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
-/**
- * 
- * 일단 돌아감, 추가 테스트케이스에 대한 메모리 초과
- *
- */
-class data {
-	int x; // 0~h
-	int y; // 0~w
-	int time;
 
-	public data(int x, int y, int time) {
-		this.x = x;
-		this.y = y;
-		this.time = time;
-	}
-
-}
-class data2 {
-	int x;
-	int y;
-	public data2(int x, int y) {
-		this.x = x;
-		this.y = y;
-	}
-}
-
+// 25%에서 실패 - 원인 찾아보기
 public class Main {
-	static int[] dx = { -1, 0, 1, 0 };
-	static int[] dy = { 0, 1, 0, -1 };
-	static char[][] arr = new char[1001][1001];
 
-	public static void bfs(data start, int w, int h) {
-		boolean[][] visited = new boolean[h][w];
-		boolean[][] visited2 = new boolean[h][w];
-		Queue<data> q = new LinkedList<>();
-		List<data2> f = new LinkedList<>();
-		q.add(start);
-		visited[start.x][start.y] = true;
-		for (int i = 0; i < h; i++) {
-			for (int j = 0; j < w; j++) {
-				if (arr[i][j] == '*') {
-					f.add(new data2(i, j));
-					visited2[i][j] = true;
-				}
-			}
-		} // 초기 불의 위치
-		while (!q.isEmpty()) {
-			// 불 증식
-			int t = f.size();
-			for (int i = 0; i < t; i++) {
-				int x_ = f.get(i).x;
-				int y_ = f.get(i).y;
-				for (int k = 0; k < 4; k++) {
-					if (0 <= x_ + dx[k] && x_ + dx[k] < h && 0 <= y_ + dy[k] && y_ + dy[k] < w
-							&& arr[x_ + dx[k]][y_ + dy[k]] != '#') {
-						arr[x_ + dx[k]][y_ + dy[k]] = '*';
-						f.add(new data2(x_ + dx[k], y_ + dy[k]));
-						visited2[x_+dx[k]][y_+dy[k]] = true;
+	public static int s_x;
+	public static int s_y;
+	public static int w, h;
+	public static char[][] map;
+	public static boolean[][] visited_f;
+	public static boolean[][] visited_u;
+	public static int[] dir_x = {0,0,-1,1};
+	public static int[] dir_y = {1,-1,0,0};
+	public static ArrayList<int[]> f_arr = new ArrayList<>();
+	public static void bfs() {
+		Queue<int[]> f = new LinkedList<>();
+		Queue<int[]> f_t = new LinkedList<>();
+		Queue<int[]> u = new LinkedList<>();
+		Queue<int[]> u_t = new LinkedList<>();
+		int x_, y_;
+		
+		// init data
+		for(int i = 0 ; i<f_arr.size();i++) f.add(f_arr.get(i));
+		u.add(new int[] {s_x,s_y});
+		int time = 0;
+		while(!u.isEmpty()) { // end condition
+			// 불 전이
+			while(!f.isEmpty()) f_t.add(f.poll()); // 복사
+			while(!f_t.isEmpty()) {
+				int[] f_dir = f_t.poll();
+				
+				for(int i = 0; i<4;i++) {
+					x_ = f_dir[0] + dir_x[i];
+					y_ = f_dir[1] + dir_y[i];
+					
+					if(0>x_ || y_<0 || x_ >=h || y_>=w) continue;
+					if((map[x_][y_] != '*' || map[x_][y_]!='#') && !visited_f[x_][y_]) {
+						f.add(new int[] {x_,y_});
+						visited_f[x_][y_] = true;
+						map[x_][y_] = '*';
 					}
-
 				}
 			}
-			for (int i = 0; i < t; i++)
-				f.remove(t);
-
-			// 상근이 이동
-			data data = q.poll();
-			for (int k = 0; k < 4; k++) {
-				// 탈출여부 확인
-				if (!(0 <= data.x + dx[k] && data.x + dx[k] < h && 0 <= data.y + dy[k] && data.y + dy[k] < w)) { // out
-					System.out.println(data.time + 1);
-					return;
+			// 불 전이 완료
+			
+			while(!u.isEmpty()) u_t.add(u.poll()); // 복사
+			while(!u_t.isEmpty()) {
+				int[] u_dir = u_t.poll();
+				
+				for(int i = 0; i<4; i++) {
+					x_ = u_dir[0] + dir_x[i];
+					y_ = u_dir[1] + dir_y[i];
+					
+					if(0>x_ || y_<0 || x_ >=h || y_>=w) {
+						System.out.println(time+1);
+						return;
+					}
+					if(map[x_][y_]=='.' && !visited_u[x_][y_]) {
+						u.add(new int[] {x_,y_});
+						visited_u[x_][y_] = true;
+					}
 				}
-				if (arr[data.x + dx[k]][data.y + dy[k]] == '.') {
-					visited[data.x + dx[k]][data.y + dy[k]] = true;
-					q.add(new data(data.x + dx[k], data.y + dy[k], data.time + 1));
-				}
-			} // end for
-
-		} // end while
-
+			}			
+			time++;		
+		}
 		System.out.println("IMPOSSIBLE");
 	}
-
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+		String bf;
 		int T = Integer.parseInt(br.readLine());
-		data start = new data(1, 1, 0);
 
 		for (int t = 1; t <= T; t++) {
-			String[] temp = br.readLine().split(" ");
-			int w = Integer.parseInt(temp[0]);
-			int h = Integer.parseInt(temp[1]);
-			for (int i = 0; i < h; i++) {
-				String str = br.readLine();
-				for (int j = 0; j < w; j++) {
-					arr[i][j] = str.charAt(j);
-					if (arr[i][j] == '@') {
-						start.x = i;
-						start.y = j;
-					}
+			bf = br.readLine();
 
+			w = Integer.parseInt(bf.split(" ")[0]);
+			h = Integer.parseInt(bf.split(" ")[1]);
+			map = new char[h][w];
+			visited_f = new boolean[h][w];
+			visited_u = new boolean[h][w];
+			
+			for (int i = 0; i < h; i++) {
+				bf = br.readLine();
+
+				for (int j = 0; j < w; j++) {
+					map[i][j] = bf.charAt(j);
+					if (map[i][j] == '@') {
+						s_x = i;
+						s_y = j;
+					}
+					else if(map[i][j] == '*') {
+						f_arr.add(new int[] {i,j});
+						visited_f[i][j] = true;
+					}
+					else if(map[i][j] == '#') {
+						visited_f[i][j] = true;
+					}
 				}
 			} // end input
-
-			bfs(start, w, h);
-		}
+			bfs();
+			
+		
+		} // end for.
 	}
 }
