@@ -18,7 +18,7 @@ class data {
 	}
 }
 
-public class Main_bfs {
+public class Main {
 	static int dx_[] = { -1, 0, 1, 0 };
 	static int dy_[] = { 0, 1, 0, -1 };
 

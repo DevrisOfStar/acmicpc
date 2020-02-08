@@ -21,7 +21,7 @@ class data {
 
 }
 
-public class Main_bfs {//하,북,상,남,동,서
+public class Main {//하,북,상,남,동,서
 	 static int[] dx = { 1, 0, -1, 0, 0, 0 };
 	 static int[] dy = { 0, -1, 0, 1, 0, 0 };
 	 static int[] dz = { 0, 0, 0, 0, 1, -1 };

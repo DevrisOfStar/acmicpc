@@ -17,7 +17,7 @@ class data {
 
 }
 
-public class Main_bfs {
+public class Main {
 	public static int[][] arr;
 
 	public static void bfs(int N, int a, int b) {

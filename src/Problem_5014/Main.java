@@ -16,7 +16,7 @@ class data {
 	}
 }
 
-public class Main_bfs {
+public class Main {
 	public static void bfs(int F, int S, int G, int U, int D) {
 		int visited[] = new int[F + 1];
 
