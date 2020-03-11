@@ -3,6 +3,7 @@ package Problem_5014;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -19,7 +20,7 @@ class data {
 public class Main {
 	public static void bfs(int F, int S, int G, int U, int D) {
 		int visited[] = new int[F + 1];
-
+		Arrays.fill(visited, -1);
 		if (S == G) {
 			System.out.println("0");
 			return;
@@ -32,12 +33,12 @@ public class Main {
 		while (!q.isEmpty()) {
 			data data_ = q.poll();
  
-			if (data_.stair + U <= F && visited[data_.stair + U] == 0) {
+			if (data_.stair + U <= F && visited[data_.stair + U] == -1) {
 				q.add(new data(data_.stair + U, data_.cnt + 1));
 				visited[data_.stair+U] = data_.cnt+1;
 			}
 
-			if (data_.stair - D >= 0 && visited[data_.stair - D] == 0) {
+			if (data_.stair - D > 0 && visited[data_.stair - D] == -1) {
 				q.add(new data(data_.stair - D, data_.cnt + 1));
 				visited[data_.stair-D] = data_.cnt+1;
 			}
