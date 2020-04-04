@@ -27,7 +27,12 @@ public class Main {
 
 
 	public static void solution(int num) {
-		int[][] temp = arr;
+		int[][] temp = new int[N+1][M+1];
+		for(int i = 1; i<=N;i++) {
+			for(int j = 1; j<=M;j++) {
+				temp[i][j] = arr[i][j];
+			}
+		}
 		if(num == K) {
 			getAnswer();
 			return;
@@ -40,7 +45,11 @@ public class Main {
 					isvisited[i] = true;
 					solution(num+1);
 					isvisited[i] = false;
-					arr = temp;
+					for(int k = 1; k<=N;k++) {
+						for(int j = 1; j<=M;j++) {
+							arr[k][j] = temp[k][j];
+						}
+					}			
 					
 				}
 				
