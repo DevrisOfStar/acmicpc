@@ -31,12 +31,12 @@ public class Main {
 				for (int j = 1; j <= n; j++) {
 					if (i == j)
 						continue;
-					else if (arr[i][k] != 0 && arr[k][j] != 0) {
+					else if (arr[i][k] != 0 && arr[k][j] != 0) { // k와 아는사이인 경우
 
-						if (arr[i][j] == 0)
-							arr[i][j] = arr[i][k] + arr[k][j];
-						else
-							arr[i][j] = Math.min(arr[i][j], arr[i][k] + arr[k][j]);
+						if (arr[i][j] == 0) // i와 j의 관계수가 정의되지 않은 경우
+							arr[i][j] = arr[i][k] + arr[k][j];  // i와 k의 관계수 + k와 j의 관계수의 합
+						else // 관계수가 정의된 경우
+							arr[i][j] = Math.min(arr[i][j], arr[i][k] + arr[k][j]); // 최소값을 i와 j의 관계수로 결정
 					}
 
 				}
