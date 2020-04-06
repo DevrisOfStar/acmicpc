@@ -21,16 +21,18 @@ public class Main {
 		}
 		
 		for(int i = 1; i<=n; i++) {
+			// 왼쪽 가장자리 초기화
 			dp[i][1] = arr[i][1] + dp[i-1][1];
 		}
 		
 		for(int i = 2; i<=n; i++) {
 			for(int j = 2; j<=i; j++) {
+				// 삼각형을 기준으로 왼쪽으로 내려갔을때와 오른쪽으로 내려갔을때를 비교해서 최대값 구하기
 				dp[i][j] = dp[i-1][j] > dp[i-1][j-1] ? dp[i-1][j] + arr[i][j] : dp[i-1][j-1]+arr[i][j]; 
 			}
 		}
 		int max = Integer.MIN_VALUE;
-		for(int i = 1; i<=n; i++) {
+		for(int i = 1; i<=n; i++) { // 마지막 층에서 최대값 구하기
 			if(max < dp[n][i]) max = dp[n][i];
 		}
 		System.out.println(max);
