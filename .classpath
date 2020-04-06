@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="1000"/>
+	<classpathentry kind="src" path="9000"/>
+	<classpathentry kind="src" path="8000"/>
+	<classpathentry kind="src" path="6000"/>
+	<classpathentry kind="src" path="5000"/>
+	<classpathentry kind="src" path="4000"/>
+	<classpathentry kind="src" path="3000"/>
+	<classpathentry kind="src" path="2000"/>
+	<classpathentry kind="src" path="18000"/>
+	<classpathentry kind="src" path="17000"/>
+	<classpathentry kind="src" path="16000"/>
+	<classpathentry kind="src" path="15000"/>
+	<classpathentry kind="src" path="14000"/>
+	<classpathentry kind="src" path="13000"/>
+	<classpathentry kind="src" path="12000"/>
+	<classpathentry kind="src" path="11000"/>
+	<classpathentry kind="src" path="10000"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
