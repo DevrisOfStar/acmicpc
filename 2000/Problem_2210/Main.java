@@ -13,10 +13,10 @@ public class Main {
 	static Set<Integer> ans = new HashSet<>();
 	public static void func(int i, int j, int cnt, int data) {
 		if(cnt == 6) {
-			ans.add(data);
+			ans.add(data); // 중복되는 데이터는 add되지 않음.
 		}
 		else {
-			for(int k = 0 ; k < 4; k++) {
+			for(int k = 0 ; k < 4; k++) { // 4방향으로 재귀 사용
 				int dx_ = i + dx[k];
 				int dy_ = j + dy[k];
 				if(0> dx_ || 0> dy_ || dx_ >=5 || dy_ >=5) continue;
