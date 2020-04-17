@@ -21,10 +21,10 @@ public class Main {
 		int r_dx, r_dy, b_dx, b_dy;
 		while (!q.isEmpty()) {
 			int[] cur = q.poll();
-			if (cur[4] > 10)
+			if (cur[4] > 10) // 10번 초과로 진행했을경우 종료
 				break;
 
-			if (cur[0] == o_x && cur[1] == o_y) {
+			if (cur[0] == o_x && cur[1] == o_y) { // 빨간 구슬이 구멍인 경우, 횟수 return
 				return cur[4];
 			}
 			for (int i = 0; i < 4; i++) {
@@ -33,68 +33,66 @@ public class Main {
 				b_dx = cur[2];
 				b_dy = cur[3];
 
-				while (true) {
+				while (true) { // 빨간구슬 이동
 					r_dx += dir_x[i];
 					r_dy += dir_y[i];
 
-					if (map[r_dx][r_dy] == '#') {
+					if (map[r_dx][r_dy] == '#') { // 벽이면 바로 전 좌표로 이동
 						r_dx -= dir_x[i];
 						r_dy -= dir_y[i];
 						break;
-					} else if (map[r_dx][r_dy] == 'O') {
+					} else if (map[r_dx][r_dy] == 'O') { // 구멍이면 탈출
 						break;
 					}
 				}
 
-				while (true) {
+				while (true) { // 파란구슬 이동
 					b_dx += dir_x[i];
 					b_dy += dir_y[i];
 
-					if (map[b_dx][b_dy] == '#') {
+					if (map[b_dx][b_dy] == '#') { // 벽이면 바로 전 좌표로 이동
 						b_dx -= dir_x[i];
 						b_dy -= dir_y[i];
 						break;
-					} else if (map[b_dx][b_dy] == 'O') {
+					} else if (map[b_dx][b_dy] == 'O') { // 구멍이면 탈출
 						break;
 					}
 				} // 이동완료
-
-				// 충돌
-
-				if (b_dx == o_x && b_dy == o_y)
+			
+				if (b_dx == o_x && b_dy == o_y) // 파란 구슬 탈출이면 상황 종료
 					continue;
 
+				// 충돌 : 빨간구슬과 파란구슬이 겹친 경우
 				if (r_dx == b_dx && r_dy == b_dy) {
-					switch (i) {
-
-					case (0):
-						if (cur[1] < cur[3])
+					switch (i) { // 진행 방향에 따라 처리
+					case (0): // 남쪽으로 구슬이 굴러감
+						if (cur[1] < cur[3]) // 빨간구슬이 나중에 간 경우
 							r_dy--;
-						else
+						else // 파란 구슬이 나중에 간 경우
 							b_dy--;
 						break;
-					case (1):
-						if (cur[1] < cur[3])
+					case (1): // 북쪽으로 구슬이 굴러감
+						if (cur[1] < cur[3]) // 파란구슬이 나중에 간 경우
 							b_dy++;
-						else
+						else // 빨간구슬이 나중에 간 경우
 							r_dy++;
 						break;
-					case (2):
-						if(cur[0] < cur[2])
+					case (2): // 동쪽으로 구슬이 굴러감
+						if(cur[0] < cur[2]) // 빨간구슬이 나중에 간 경우
 							r_dx--;
-						else
+						else // 파란구슬이 나중에 간 경우
 							b_dx--;
 						break;
-					case (3):
-						if(cur[0] < cur[2])
+					case (3): // 서쪽으로 구슬이 굴러감
+						if(cur[0] < cur[2]) // 파란구슬이 나중에 간 경우
 							b_dx++;
-						else
+						else // 빨간구슬이 나중에 간 경우
 							r_dx++;
 						break;
 					}
 				}
 				
-				if(!visited[r_dx][r_dy][b_dx][b_dy]) {
+				if(!visited[r_dx][r_dy][b_dx][b_dy]) { // 수행해본 이력이 없으면, 큐에 삽입
 					q.add(new int[] {r_dx,r_dy,b_dx,b_dy,cur[4]+1});
 					visited[r_dx][r_dy][b_dx][b_dy] = true;
 				}
@@ -121,14 +119,14 @@ public class Main {
 			bf = br.readLine();
 			for (int j = 0; j < m; j++) {
 				map[i][j] = bf.charAt(j);
-				if (map[i][j] == 'R') {
+				if (map[i][j] == 'R') { // 빨간구슬 좌표 저장
 					r_x = i;
 					r_y = j;
 					map[i][j] = '.';
-				} else if (map[i][j] == 'O') {
+				} else if (map[i][j] == 'O') { // 구멍위치 저장
 					o_x = i;
 					o_y = j;
-				} else if (map[i][j] == 'B') {
+				} else if (map[i][j] == 'B') { // 파란구슬 위치 저장
 					b_x = i;
 					b_y = j;
 					map[i][j] = '.';
