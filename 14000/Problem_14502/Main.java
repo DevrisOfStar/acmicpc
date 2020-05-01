@@ -45,6 +45,7 @@ public class Main {
 						
 						for(int i3=0; i3<M;i3++) {
 							for(int j3=0;j3<N;j3++) {
+								// 3 좌표가 다 다르고, 벽이 아닌경우
 								if(i1==i2 && j1==j2) continue;
 								if(i1==i3 && j1==j3) continue;
 								if(i2==i3 && j2==j3) continue;
@@ -53,6 +54,7 @@ public class Main {
 								for(int i = 0; i < M ; i++) {
 									for(int j = 0; j<N; j++) {
 										if(map[i][j] == 2) {
+												// 벽을 세우고, bfs 진행 : 바이러스 퍼짐
 												map[i1][j1] = 1;
 												map[i2][j2] = 1;
 												map[i3][j3] = 1;
@@ -78,6 +80,7 @@ public class Main {
 									}
 								}
 								int cnt = 0;
+								// 안전영역 카운트
 								for(int i = 0 ; i < M; i++) {
 									for(int j = 0 ; j < N; j++) {
 										if(map[i][j] == 0) cnt++;
