@@ -49,13 +49,14 @@ public class Main {
 						}
 					}
 				}
-			}
-			if (flag && cnt < 2) {
+			} // bfs 탐색
+			
+			if (flag && cnt < 2) { // flag == false일때, 즉 얼음조각이 없는 경우
 				System.out.println(0);
 				return;
 			}
 
-			if (cnt >= 2) {
+			if (cnt >= 2) { // 분리 된 경우
 				System.out.println(year);
 				return;
 			}
@@ -72,13 +73,13 @@ public class Main {
 							if (arr[i + dx[di]][j + dy[di]] == 0)
 								t++;
 						}
-						arr[i][j] = arr[i][j] <= t ? -1 : arr[i][j] - t;
+						arr[i][j] = arr[i][j] <= t ? -1 : arr[i][j] - t; // 바닷물의 개수만큼 빼줌
 					}
 				}
 			}
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < M; j++) {
-					if (arr[i][j] == -1)
+					if (arr[i][j] == -1) // 다 녹았을때
 						arr[i][j] = 0;
 				}
 			}
