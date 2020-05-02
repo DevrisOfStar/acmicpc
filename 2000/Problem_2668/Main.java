@@ -14,7 +14,7 @@ public class Main {
 		if(isvisited[nextNum]) return false;
 		isvisited[nextNum] = true;
 		
-		if(startNum == nextNum || DFS(startNum, arr[nextNum])) {
+		if(startNum == nextNum || DFS(startNum, arr[nextNum])) { // 순환 조건 : start와 next가 일치할때, arr[next]와 일치할때
 			cnt++;
 			cycle[nextNum] = true;
 			return true;
