@@ -9,16 +9,16 @@ public class Main {
 	static int[] arr;
 	static boolean[] arr_;
 	public static void ans(int a, int cnt) {
-		if(cnt == M) {
+		if(cnt == M) { // M개를 채웠으면, 출력
 			for(int i = 0; i < N; i++)
 				if(arr_[i])System.out.print(arr[i] + " ");
 			System.out.println();
 		}
 		else {
 			for(int i = a; i<N; i++) {
-				if(!arr_[i]) {
+				if(!arr_[i]) { // arr의 존재여부 확인
 					arr_[i] = true;
-					ans(i, cnt+1);
+					ans(i, cnt+1); // 개수를 늘리고 진행, 오름차순으로 구하기 위해서 i를 파라미터로 전달
 					arr_[i] = false;
 				}
 			}

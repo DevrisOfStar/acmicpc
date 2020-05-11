@@ -9,7 +9,7 @@ public class Main {
 	public static int[] arr;
 	public static StringBuilder sb;
 	public static void ans(int cnt) {
-		if(cnt == M) {
+		if(cnt == M) { // M개가 채워지면, 출력
 			for(int i = 0 ; i < M ; i++) {
 				sb.append(arr[i]).append(" ");
 			}
@@ -17,8 +17,8 @@ public class Main {
 		}
 		else {
 			for(int i = 1; i <= N;i++) {
-				arr[cnt] = i;
-				ans(cnt+1);
+				arr[cnt] = i; // 중복가능하므로 arr에 존재여부 판단 필요X
+				ans(cnt+1); // 순서가 상관없으므로, 개수만 파라미터로 전달
 			}
 		}
 	}
