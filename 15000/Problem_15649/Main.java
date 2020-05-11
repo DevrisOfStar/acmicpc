@@ -9,18 +9,18 @@ public class Main {
 	static boolean[] arr_;
 	static int N,M;
 	
-	public static void ans(int m) {
-		if(m == M) {
+	public static void ans(int m) { // m은 채워진 개수
+		if(m == M) { // 원하는 길이만큼 구하면, 출력
 			for(int i = 0; i<m;i++)
 				System.out.print(arr[i] + " ");
 			System.out.println();
 		}
-		else {
+		else { 
 			for(int i = 1; i<=N; i++) {
-				if(!arr_[i]) {
+				if(!arr_[i]) { // arr에 존재여부 확인
 					arr_[i] = true;
 					arr[m] = i;
-					ans(m+1);
+					ans(m+1); // 채워진 개수를  1개 늘리고 진행 
 					arr_[i] = false;
 				}
 			}
