@@ -12,7 +12,7 @@ public class Main {
 	static int[] dy = {0, 0, -1, 1};
 	static int max = Integer.MIN_VALUE;
 	public static void answer(int i, int j, int num, int cnt) {
-		if(cnt == K) {
+		if(cnt == K) { // 개수가 다 채워졌으면, 최대값 계산
 			if(max < num) max = num;
 		}
 		else {
@@ -20,13 +20,13 @@ public class Main {
 				for(int l = 0; l<M;l++) {
 					if(!is_[k][l]) {
 						boolean flag = true;
-						for(int m = 0 ; m < 4; m++) {
+						for(int m = 0 ; m < 4; m++) { // 4방향 확인
 							if(k+dx[m] < 0 || k+dx[m] >= N || l+dy[m] < 0 || l+dy[m] >= M) continue;
-							if(is_[k+dx[m]][l+dy[m]]) flag = false;
+							if(is_[k+dx[m]][l+dy[m]]) flag = false; // 선택한적이 있으면, flag false 
 						}
-						if(flag) {
+						if(flag) { // 4 방향 모두 선택한적이 없으면, 선택 후 진행
 							is_[k][l] = true;
-							answer(k,l,num+arr[k][l], cnt+1);
+							answer(k,l,num+arr[k][l], cnt+1); // 선택한 격자판에서 다시 시작
 							is_[k][l] = false;
 						}
 					}
