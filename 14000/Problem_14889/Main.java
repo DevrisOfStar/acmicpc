@@ -12,24 +12,23 @@ public class Main {
 	static int min = Integer.MAX_VALUE;
 
 	public static void getAnswer(int idx, int cnt) {
-		if (cnt == N / 2) {
+		if (cnt == N / 2) { // 팀이 나눠진 경우
 			int a = 0, b = 0;
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
-					if (i == j)
+					if (i == j) // 번호가 같은 사람끼린 시너지가 존재하지않으므로
 						continue;
-					if (team[i] == true && team[j] == true) {
+					if (team[i] == true && team[j] == true) { // 스타트팀일때,
 						a += (arr[i][j] + arr[j][i]);
-					} else if (team[i] == false && team[j] == false) {
+					} else if (team[i] == false && team[j] == false) { // 링크팀일때,
 						b += (arr[i][j] + arr[j][i]);
-
 					}
 				}
 			}
 			int c = Math.abs((a - b)/2);
 			if (min > c)
 				min = c;
-		} else {
+		} else { // 팀 선정 : N/2명을 선출
 			for (int i = idx; i < N; i++) {
 				if (!team[i]) {
 					team[i] = true;
