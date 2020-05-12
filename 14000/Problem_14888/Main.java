@@ -11,17 +11,16 @@ public class Main {
 	static int max = Integer.MIN_VALUE, min = Integer.MAX_VALUE;
 
 	static void answer(int idx, int sum) {
-		if (idx == N - 1) {
+		if (idx == N - 1) { // symbol개수 (숫자 개수 - 1)만큼 진행했다면
 			if (max < sum)
 				max = sum;
 			if (min > sum)
 				min = sum;
 		} else {
-			int sum_temp = sum;
 			for (int i = 0; i < 4; i++) {
-				if (Symbol[i] != 0) {
+				if (Symbol[i] != 0) { // 사용할 수 있는 부호가 존재하면,
 					Symbol[i]--;
-					switch (i) {
+					switch (i) { // 부호의 종류에 따라서 계산후 다음단계 진행
 					case 0:
 						answer(idx + 1, sum + arr[idx + 1]);
 						break;
