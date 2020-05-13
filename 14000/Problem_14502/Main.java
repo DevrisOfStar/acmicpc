@@ -80,7 +80,7 @@ public class Main {
 									}
 								}
 								int cnt = 0;
-								// 안전영역 카운트
+								// 안전영역 카운트 : 0은 안전영역, 2는 감염구역
 								for(int i = 0 ; i < M; i++) {
 									for(int j = 0 ; j < N; j++) {
 										if(map[i][j] == 0) cnt++;
