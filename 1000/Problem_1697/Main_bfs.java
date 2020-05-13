@@ -29,7 +29,7 @@ public class Main_bfs {
 		while(!q.isEmpty()) {
 		data d_ = q.poll();
 		
-		
+		// +1, -1, *2 의 방문여부를 판단하고 범위내에 존재하면, queue에 삽입
 		if(d_.location - 1 >= 0 && d_.location -1 <= 100000 && isvisited[d_.location-1] == 0) { // 방문 x
 			q.add(new data(d_.location-1, d_.time+1));
 			isvisited[d_.location-1] = d_.time+1;
