@@ -19,11 +19,11 @@ public class Main {
 		else {
 			int size = arr.size();
 			for(int i = 1 ; i < size-1; i++) {	
-				int temp = arr.get(i);
-				int temp2 = arr.get(i-1) * arr.get(i+1);
-				arr.remove(i);
-				func(temp2+number);
-				arr.add(i,temp);
+				int temp = arr.get(i); // 선택
+				int temp2 = arr.get(i-1) * arr.get(i+1); // 에너지 모으기
+				arr.remove(i); // 제거
+				func(temp2+number); // 에너지 합산 후 재 계산
+				arr.add(i,temp); // 초기상태로 다시 돌려놓기
 			}
 		}
 	}
