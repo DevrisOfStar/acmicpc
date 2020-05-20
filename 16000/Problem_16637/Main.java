@@ -13,8 +13,9 @@
 		static int cnt =0;
 		
 		public static void dfs(ArrayList<String> arr, int idx) {
-			if(arr.size() >= 1 && arr.size() < idx) {
-				while(arr.size() > 1) {
+			// arr.size() < idx == 괄호를 칠 수 없을때,
+			if(arr.size() >= 1 && arr.size() < idx) { // 순차계산
+				while(arr.size() > 1) { // 계산한 결과가 나올때까지.
 					int a = Integer.parseInt(arr.get(0));
 					int b = Integer.parseInt(arr.get(2));
 					
@@ -36,7 +37,7 @@
 				if(data > max) max = data;
 				return;
 			}
-			else {
+			else { // 괄호 계산
 				int size = arr.size();
 				for(int i = idx; i < size; i++) {
 					if(i%2==1) {
