@@ -108,14 +108,14 @@ public class Main {
 
 	public static void rotate(int r, int c, int s) {
 		for (int k = 1; k <= s; k++) {
-			int temp = arr[r - k][c - k];
-			for (int i = r - k; i < r + k; i++)
+			int temp = arr[r - k][c - k]; // 왼쪽 상단의 값 temp에 저장
+			for (int i = r - k; i < r + k; i++) // 왼쪽 상단 --> 왼쪽 하단
 				arr[i][c - k] = arr[i + 1][c - k];
-			for (int j = c - k; j < c + k; j++)
+			for (int j = c - k; j < c + k; j++) // 왼쪽 하단 --> 오른쪽 하단
 				arr[r + k][j] = arr[r + k][j + 1];
-			for (int i = r + k; i > r - k; i--)
+			for (int i = r + k; i > r - k; i--) // 오른쪽 하단 --> 오른쪽 상단
 				arr[i][c + k] = arr[i - 1][c + k];
-			for (int j = c + k; j > c - k; j--)
+			for (int j = c + k; j > c - k; j--) // 오른쪽 상단 --> 왼쪽 상단
 				arr[r - k][j] = arr[r - k][j - 1];
 			arr[r - k][c - k + 1] = temp;
 		}
