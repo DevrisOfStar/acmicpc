@@ -24,8 +24,8 @@ public class Main {
 			for (int i = 0; i < N; i++) {
 				out_cnt = 0;
 				for (int t = 1; t <= 3; t++)
-					home[t] = 0;
-				while (out_cnt < 3) {
+					home[t] = 0; // 초기화
+				while (out_cnt < 3) { // 아웃카운트가 3이 될때까지 계속
 					player_number = (player_number + 1) % 9;
 					number = player[i][order[player_number]];
 					switch (number) {
@@ -37,10 +37,10 @@ public class Main {
 					case 3:
 						for (int t = 3; t >= 1; t--) {
 							if (home[t] == 1) {
-								if (t + number >= 4) {
+								if (t + number >= 4) { // 홈인 할 수 있으면
 									score++;
 									home[t] = 0;
-								} else {
+								} else { // 홈인 할 수 없는 경우
 									home[t + number] = 1;
 									home[t] = 0;
 								}
@@ -50,9 +50,9 @@ public class Main {
 						home[number] = 1;
 
 						break;
-					case 4:
+					case 4: // 홈런 친 경우
 						score++;
-						for (int t = 1; t <= 3; t++) {
+						for (int t = 1; t <= 3; t++) { 
 							if (home[t] == 1)
 								score++;
 							home[t] = 0;
@@ -67,7 +67,7 @@ public class Main {
 			return;
 
 		} else if (n == 3) {
-			playGame(n + 1);
+			playGame(n + 1); // 1번타자를 4번타자로 지정
 		} else {
 			for (int i = 0; i < 9; i++) {
 				if (!isvalid[i]) {
