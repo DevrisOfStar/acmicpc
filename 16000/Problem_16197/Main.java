@@ -1,4 +1,4 @@
-package Problem_16917;
+package Problem_16197;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,13 +39,16 @@ public class Main {
 					if(dc < 0 || dd < 0 || dc >= N || dd >= M) 
 						out_coin++;
 					
-					if(out_coin == 2) continue;
-					if(out_coin == 1) {
+					if(out_coin == 2) continue; // 두 코인 다 나간경우, X
+					if(out_coin == 1) { // 코인 1개만 나간 경우, 정답
 						System.out.println(cnt);
 						return;
 					}
 					
-					if(arr[da][db] =='#' && arr[dc][dd] =='#') continue;
+					// 두코인이 이동한 장소가 벽인 경우, 해당없음
+					if(arr[da][db] =='#' && arr[dc][dd] =='#') continue; 
+					
+					// 코인 하나의 이동한 장소가 벽인 경우, 그 코인의 위치를 다시 바꿈ㄴ
 					if(arr[da][db] =='#') {
 						da -= dx[k];
 						db -= dy[k];
@@ -54,6 +57,7 @@ public class Main {
 						dc -= dx[k];
 						dd -= dy[k];
 					}
+					
 					if(da == dc && db == dd) continue;
 					if(isvisited[da][db][dc][dd]) continue;
 					
