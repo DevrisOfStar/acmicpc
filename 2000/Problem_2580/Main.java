@@ -13,13 +13,13 @@ public class Main {
 		int a = blinks.get(cnt)[0];
 		int b = blinks.get(cnt)[1];
 		
-		for(int j = 0; j<9;j++) {
+		for(int j = 0; j<9;j++) { // 가로 체크
 			if(arr[a][j] == num) return false;
 		}
-		for(int i = 0; i<9;i++) {
+		for(int i = 0; i<9;i++) { // 세로 체크
 			if(arr[i][b] == num) return false;
 		}
-		for(int i = (a/3)*3; i<(a/3)*3+3;i++) {
+		for(int i = (a/3)*3; i<(a/3)*3+3;i++) { // ㅁ 체크
 			for(int j = (b/3)*3; j<(b/3)*3+3;j++) {
 				if(arr[i][j] == num) return false;
 			}
@@ -43,7 +43,7 @@ public class Main {
 		
 		for(int i = 1; i<=9; i++) {
 			
-			if(isvalid(cnt, i)) {
+			if(isvalid(cnt, i)) { // 유효하면, 체킹하고 다음단계로 넘어감
 				int a = blinks.get(cnt)[0];
 				int b = blinks.get(cnt)[1];
 				arr[a][b] = i;
