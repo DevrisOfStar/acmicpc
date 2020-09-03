@@ -36,6 +36,8 @@ public class Main {
 
 						if (x < 0 || y < 0 || x >= n || y >= n)
 							continue;
+						
+						// 적록색약 유무와 방문여부에 따라 bfs 진행.
 						if (!isvisited[x][y] && !hasdisabled && (temp == map[x][y])) {
 							q.offer(new int[] { x, y });
 							isvisited[x][y] = true;
@@ -68,10 +70,10 @@ public class Main {
 			}
 		}
 
-		int cnt1 = bfs(false);
+		int cnt1 = bfs(false); // 적록색약이 없는 경우
 		for(int i = 0 ; i<n;i++)
 			Arrays.fill(isvisited[i], false);
-		int cnt2 = bfs(true);
+		int cnt2 = bfs(true); // 적록색약이 있는 경우
 
 		System.out.printf("%d %d\n", cnt1, cnt2);
 
