@@ -27,16 +27,19 @@ public class Main {
 		
 		long s = sc.nextLong();
 		long t = sc.nextLong();
+		// s == t인 경우, 예외처리
 		if(s == t) {System.out.println("0"); return;}
 		ArrayList<Long> arr = new ArrayList<>();
 		Queue<Data> q = new LinkedList<>();
 		q.add(new Data(s, ""));
 		arr.add(s);
+		
 		while(!q.isEmpty()) {
 			Data data = q.poll();
 			String st = data.ans;
 			
 			if(data.number == t) {
+				// t와 일치할 경우 결과값 출력
 				System.out.println(st);
 				return;
 			}
@@ -45,9 +48,12 @@ public class Main {
 				if (dn < 1) continue;
 				if(arr.contains(dn)) continue;
 				arr.add(dn);
+				// 해당 dn과 결과값을 저장
 				q.add(new Data(dn, st+d[i]));
 			}
 		}
+		
+		// 결과값이 존재하지 않는 경우
 		System.out.println(-1);
 	}
 }
