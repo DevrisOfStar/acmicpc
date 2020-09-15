@@ -17,8 +17,9 @@ public class Main {
 		for(i = 0 ; i < arr.length; i++)
 			arr[i] = Integer.parseInt(br.readLine());
 		i = arr.length-1;
-		while(k>0) {
-			if(k==0) break;
+		while(k>0) { 
+			if(k==0) break; // 다세면 종료
+			// 큰 동전부터 차례로 개수세기
 			cnt += k/arr[i];
 			k%=arr[i];
 			i--;
