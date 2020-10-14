@@ -19,15 +19,15 @@ public class Main {
 			mid = (start + end) / 2;
 			
 			if(arr[mid] == target) {
-				answer[idx] = 1;
+				answer[idx] = 1; // 찾은 경우, 1로 바꿈.
 				
 				return;
 			}
-			else if(arr[mid] > target) {
-				end = mid - 1;
+			else if(arr[mid] > target) { // target보다 크면
+				end = mid - 1; // 왼쪽 부분을 범위로 선택
 			}
-			else {
-				start = mid + 1;
+			else { // target보다 작으면
+				start = mid + 1; // 오른쪽 부분을 범위로 선택
 			}
 		}
 		
