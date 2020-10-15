@@ -10,7 +10,7 @@ public class Main {
 	static int[] arr, arr_;
 	static int[] answer;
 
-	public static int ans(int idx) { // Lower bound
+	public static int ans(int idx) { // Lower bound : 해당 숫자가 처음으로 나온 index return
 		int target = arr_[idx];
 		int start = 0;
 		int end = arr.length - 1;
@@ -28,7 +28,7 @@ public class Main {
 		return end;
 	}
 
-	public static int ans2(int idx) { // Upper bound
+	public static int ans2(int idx) { // Upper bound : 해당 숫자보다 처음으로 큰 숫자의 index return
 		int target = arr_[idx];
 		int start = 0;
 		int end = arr.length - 1;
@@ -71,7 +71,7 @@ public class Main {
 			if (upper == N - 1 && arr[N - 1] == arr_[i]) // last boundary value.
 				upper++;
 
-			answer[i] = upper - lower;
+			answer[i] = upper - lower; // 범위를 이용하여 개수를 구함
 		}
 
 		for (int i = 0; i < M; i++) {
