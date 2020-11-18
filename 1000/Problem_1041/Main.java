@@ -19,7 +19,7 @@ public class Main {
 		if (N == 1) {
 			Arrays.sort(arr);
 			for (int i = 0; i < 5; i++)
-				sum.add(new BigInteger(String.valueOf(arr[i])));
+				sum = sum.add(new BigInteger(String.valueOf(arr[i])));
 		} else {
 			BigInteger a, b, c;
 			BigInteger n, n1, n2;
