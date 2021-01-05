@@ -1,43 +1,38 @@
 package Problem_12852;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
-		String[] arr = new String[N+1];
-		Arrays.fill(arr, "");
-		int cnt = 0;
-		arr[1] = "1";
+		int[] arr = new int[N+1];
+		int[] before = new int[N+1];
+		arr[1] = 0;
+		before[1] = -1;
+		
 		for(int i = 2; i<=N;i++) {
-			if(i % 3 == 0) {
-				arr[i] = i + " " + arr[i/3];
-			}
-			if(i%2 == 0) {
-				if(!arr[i].equals("")) {
-					cnt = arr[i].split(" ").length-1;
-					if(cnt > arr[i/2].split(" ").length) {
-						arr[i] = i+ " " + arr[i/2];
-					}	
-				}
-				else {
-					arr[i] = i+ " " + arr[i/2];
-				}
-			}
-			if(!arr[i].equals("")) {
-				cnt = arr[i].split(" ").length-1;
-				if(cnt > arr[i-1].split(" ").length) {
-					arr[i] = i+ " " + arr[i-1];
-				}	
-			}
-			else {
-					arr[i] = i+ " " + arr[i-1];
-			}
+			arr[i] = arr[i-1] + 1;
+			before[i] = i-1;
 			
+			if(i%2 == 0 && arr[i] > arr[i/2] + 1) {
+				arr[i] = arr[i/2] + 1;
+				before[i] = i/2;
+			}
+			if(i%3 == 0 && arr[i] > arr[i/3] + 1) {
+				arr[i] = arr[i/3] + 1;
+				before[i] = i/3;
+			}
 		}
-		System.out.println(arr[N].split(" ").length-1 + "\n" + arr[N]);
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(arr[N]).append("\n");
+		while(N != -1) {
+			sb.append(N).append(" ");
+			N = before[N];
+		}
+		
+		System.out.println(sb.toString());
 		
 		
 	}
