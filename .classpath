@@ -17,6 +17,7 @@
 	<classpathentry kind="src" path="12000"/>
 	<classpathentry kind="src" path="11000"/>
 	<classpathentry kind="src" path="10000"/>
+	<classpathentry kind="src" path="7000"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
