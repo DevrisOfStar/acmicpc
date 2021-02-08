@@ -21,10 +21,12 @@ public class Main {
 		StringBuilder c = new StringBuilder();
 		
 		boolean isTen = false;
-		
-		for(int i = 0; i<a_.length(); i++) {
-			int a__ = a_.charAt(i) - '0';
-			int b__ = b_.charAt(i) - '0';
+		int length = a_.length() > b_.length() ? a_.length() : b_.length();
+		for(int i = 0; i<length; i++) {
+			int a__ = 0;
+			int b__ = 0;			
+			if(i < a_.length()) a__ = a_.charAt(i) - '0';
+			if(i < b_.length()) b__ = b_.charAt(i) - '0';
 			
 			int c__ = a__ + b__;
 			if(isTen) {
