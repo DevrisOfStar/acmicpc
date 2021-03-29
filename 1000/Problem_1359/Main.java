@@ -31,7 +31,7 @@ public class Main {
 		M = Integer.parseInt(str.split(" ")[1]);
 		K = Integer.parseInt(str.split(" ")[2]);
 		
-		double answer = 0;
+		double answer = 0; 
 		do {
 			answer += (double)getAnswer(M,K)*(double)getAnswer(N-M, M-K) / (double)getAnswer(N,M);
 		} while(++K <= M);
