@@ -20,16 +20,13 @@ public class Main {
 		int ans = 0;
 		int sum = 0;
 		int s = 0, e = 0;
-		while(e < list.size()) {
-			if(sum < N) {
-				sum += list.get(e++);
-				continue;
-			}
+		while(true) {			
+			if(sum >= N) sum-=list.get(s++);
+			else if(e == list.size()) break;
+			else sum += list.get(e++);
 			if(sum == N) ++ans;
-			sum -= list.get(s++);
 		}
 		
 		System.out.println(ans);
-		
 	}
 }
