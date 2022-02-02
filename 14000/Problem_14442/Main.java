@@ -50,7 +50,7 @@ public class Main {
 					if (0 >= dx_ || N < dx_ || dy_ <= 0 || M < dy_) continue;
 					if (visited[dx_][dy_][dk_]) continue;
 					if (arr[dx_][dy_] == 1) {
-						if (dk_ < K) {
+						if (dk_ < K && !visited[dx_][dy_][dk_+1]) {
 							q.add(new int[] { dx_, dy_, data[2] + 1, data[3] + 1 });
 							visited[dx_][dy_][dk_ + 1] = true;
 						}
