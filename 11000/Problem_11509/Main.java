@@ -11,7 +11,7 @@ public class Main {
 		int N = Integer.parseInt(br.readLine());
 		int[] arr = new int[N];
 		int cnt = 0;
-		int[] arrow = new int[1000001];
+		int[] arrow = new int[1000002];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		for (int i = 0; i < N; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
